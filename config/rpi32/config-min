@@ -1,0 +1,60 @@
+CONFIG_LOCALVERSION_AUTO=y
+
+CONFIG_MMU=y                  # MMU-based Paged Memory Management Support
+CONFIG_ARCH_BCM=y             # Broadcom System-on-Chip systems
+CONFIG_ARCH_BCM2835=y         # BCM2837 and BCM2711 SoCs (Raspberry Pi 3 and 4)
+
+CONFIG_DRM=y                  # Direct Rendering Infrastructure, introduced in XFree86 4.0
+CONFIG_DRM_V3D=y              # Broadcom V3D GPU
+CONFIG_DRM_FBDEV_EMULATION=y  # Legacy fbdev emulation for DRM
+CONFIG_FB=y                   # Frame buffer device abstraction layer
+CONFIG_FB_SIMPLE=y            # Support for a simple framebuffer
+
+CONFIG_MMC=y                  # MMC/SD/SDIO I/O support
+#CONFIG_MMC_BCM2835=y          # MultiMediaCard controller driver for the BCM2835
+CONFIG_EXT4_FS=y              # Extended Filesystem 4th generation
+
+CONFIG_BINFMT_ELF=y           # Support for Executable and Linkable Format (ELF)
+CONFIG_DEVTMPFS=y             # Early ramfs instance at bootup for /dev
+CONFIG_TMPFS=y                # In-memory filesystem support
+CONFIG_CGROUPS=y              # Process grouping isolation
+CONFIG_INOTIFY_USER=y         # File monitoring interface for userspace
+CONFIG_NET=y                  # Networking support
+CONFIG_UNIX=y                 # Unix domain sockets
+
+CONFIG_MAILBOX=y              # On-chip processors communication framework
+CONFIG_BCM2835_MBOX=y         # Mailbox for the BCM2835 SoC
+CONFIG_RASPBERRYPI_FIRMWARE=y # Support communication with the Raspberry Pi firmware
+CONFIG_RASPBERRYPI_POWER=y    # Raspberry Pi power domain support
+CONFIG_PM=y                   # Device Power Management core functionality
+
+CONFIG_USB_SUPPORT=y          # Core Universal Serial Bus (USB) support
+CONFIG_USB=y                  # Enable host-side USB support
+CONFIG_USB_DWC2=y             # Raspberry Pi 3 DWC2 USB Controller
+CONFIG_HID_SUPPORT=y          # Human interface devices support
+
+CONFIG_INPUT_KEYBOARD=y       # Enables keyboard drivers selection submenu
+CONFIG_KEYBOARD_ATKBD=y       # Standard AT/PS2 keyboard
+
+CONFIG_INET=y                 # TCP/IP networking
+CONFIG_NFS_FS=y               # Network FS client support (v3)
+CONFIG_IP_PNP=y               # Automatic IP configuration
+CONFIG_IP_PNP_DHCP=y          # DHCP for IP auto config
+CONFIG_ROOT_NFS=y             # Root FS through NFS
+CONFIG_NETDEVICES=y           # Network device support
+CONFIG_USB_USBNET=y           # USB Networking
+CONFIG_USB_NET_SMSC95XX=y     # SMSC LAN95XX Ethernet adapter driver
+
+CONFIG_SMP=y
+CONFIG_CPU_FREQ=y
+CONFIG_ARM_RASPBERRYPI_CPUFREQ=y
+CONFIG_CLK_RASPBERRYPI=y
+CONFIG_SERIAL_OF_PLATFORM=y
+CONFIG_SERIAL_8250=y
+CONFIG_SERIAL_8250_CONSOLE=y
+CONFIG_SERIAL_AMBA_PL011=y
+CONFIG_SERIAL_AMBA_PL011_CONSOLE=y
+CONFIG_SERIAL_8250_EXTENDED=y
+CONFIG_SERIAL_8250_SHARE_IRQ=y
+CONFIG_SERIAL_8250_BCM2835AUX=y
+CONFIG_SERIAL_DEV_BUS=y

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while :; do
+	stty -F /dev/ttyUSB0 115200 parodd -echo 2>/dev/null &&
+	cat /dev/ttyUSB0
+done > ttyUSB0

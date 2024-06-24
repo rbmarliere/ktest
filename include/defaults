@@ -1,0 +1,22 @@
+DEFAULTS
+
+DEFAULTS IF NOT DEFINED BOX
+BOX := ${MACHINE}
+
+CONFIG_DIR := ${THIS_DIR}/config
+THIS_DIR = /home/rbmarliere/src/linux/ktest
+BUILD_DIR = ${PWD}
+OUTPUT_DIR = ${THIS_DIR}/build/${BOX}
+SCRIPTS_DIR := ${THIS_DIR}/scripts
+STORE_FAILURES = ${THIS_DIR}/failures
+LOG_DIR = ${THIS_DIR}/logs
+
+LOCALVERSION = -ktest
+BUILD_OPTIONS = -j32
+BUILD_NOCLEAN = 1
+
+#MIN_CONFIG = ${CONFIG_DIR}/${BOX}/config-min
+LOG_FILE = ${LOG_DIR}/build_${BOX}.log
+WARNINGS_FILE = ${LOG_DIR}/warn_${BOX}.log
+
+CLEAR_LOG = 1

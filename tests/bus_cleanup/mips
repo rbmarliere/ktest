@@ -1,0 +1,14 @@
+MACHINE = mips
+
+INCLUDE ../../include/defaults
+INCLUDE ../../include/debianvm
+
+DEFAULTS OVERRIDE
+MAKE_CMD = CROSS_COMPILE=/mnt/md0/toolchains/mips/mips64r6el-n32--glibc--stable-2023.11-1/bin/mips64el-linux- ARCH=mips make
+MIN_CONFIG = ${CONFIG_DIR}/bus_cleanup
+
+TEST_START
+BUILD_TYPE = defconfig
+TEST_TYPE = make_warnings_file
+BUILD_NOCLEAN = 1
+REBOOT_ON_SUCCESS = 0

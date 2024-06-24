@@ -1,0 +1,16 @@
+MACHINE = sid
+
+INCLUDE ../include/defaults
+INCLUDE ../include/debianvm
+
+#TEST_START
+#TEST = ${SSH} "echo YES!"
+#TEST_TYPE = test
+#BUILD_NOCLEAN = 1
+
+MIN_CONFIG = ${CONFIG_DIR}/${BOX}/config-min
+
+TEST_START
+TEST = ${SSH} "cd /sys/kernel/tracing && ~/trace_marker.tc; cat trace"
+TEST_TYPE = test
+BUILD_NOCLEAN = 1

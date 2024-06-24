@@ -1,0 +1,15 @@
+MACHINE = rpi32
+
+INCLUDE ../../include/defaults
+INCLUDE ../../include/debianvm
+
+DEFAULTS OVERRIDE
+MAKE_CMD = CROSS_COMPILE=arm-linux-gnueabihf- ARCH=arm make
+BUILD_TARGET = arch/arm/boot/zImage
+MIN_CONFIG = ${CONFIG_DIR}/device_cleanup/arm
+
+TEST_START
+BUILD_TYPE = defconfig
+TEST_TYPE = make_warnings_file
+BUILD_NOCLEAN = 1
+REBOOT_ON_SUCCESS = 0

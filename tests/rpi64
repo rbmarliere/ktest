@@ -1,0 +1,14 @@
+MACHINE = rpi64
+DTB = broadcom/bcm2837-rpi-3-b.dtb
+
+INCLUDE ../include/defaults
+
+DEFAULTS OVERRIDE
+MAKE_CMD = CROSS_COMPILE=/usr/bin/aarch64-linux-gnu- make ARCH=arm64
+BUILD_TARGET = arch/arm64/boot/Image
+POST_BUILD = ${SCRIPTS_DIR}/tftp_install ${KERNEL_VERSION} ${OUTPUT_DIR} ${BUILD_TARGET} ${MACHINE} ${DTB}
+
+TEST_START
+TEST_TYPE = build
+BUILD_TYPE = defconfig
+BUILD_NOCLEAN = 0

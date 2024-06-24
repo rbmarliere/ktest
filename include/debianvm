@@ -1,0 +1,21 @@
+POWER_CYCLE = virsh destroy ${MACHINE}; sleep 5; virsh start ${MACHINE}
+CONSOLE = virsh console ${MACHINE}
+CLOSE_CONSOLE_SIGNAL = KILL
+
+REBOOT_TYPE = grub2
+GRUB_REBOOT = grub-reboot
+GRUB_MENU = Linux ktest
+GRUB_FILE = /boot/grub/grub.cfg
+
+SSH_USER = root
+SSH := ssh ${SSH_USER}@${MACHINE}
+
+BUILD_TARGET = arch/x86/boot/bzImage
+TARGET_IMAGE = /boot/vmlinuz-ktest
+
+PRE_INSTALL = scp ${OUTPUT_DIR}/.config ${SSH_USER}@${MACHINE}:/boot/config-$KERNEL_VERSION
+POST_INSTALL = ${SSH} "update-initramfs -c -k $KERNEL_VERSION && mv /boot/initrd.img-$KERNEL_VERSION /boot/initrd.img-ktest && update-grub"
+
+REBOOT_ON_SUCCESS = 0
+REBOOT_SUCCESS_LINE = login:
+REBOOT := none

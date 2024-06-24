@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "usage: $0 <path to kernel source>"
+    exit 1
+fi
+
+pushd $1
+
+sed -i '/CONFIG_RANDSTRUCT=/d' .config
+sed -i 's/.*CONFIG_RANDSTRUCT_NONE.*/CONFIG_RANDSTRUCT_NONE=y/' .config
+sed -i 's/.*CONFIG_RANDSTRUCT_FULL.*/# CONFIG_RANDSTRUCT_FULL is not set/' .config
+make CC=clang olddefconfig
+
+popd
+

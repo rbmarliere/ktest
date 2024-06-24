@@ -1,0 +1,31 @@
+#!/bin/bash
+
+TFTP=/mnt/md0/ftp
+
+if [ $# -lt 4 ]; then
+    echo "usage: $0 <kernel version> <build output dir> <build target> <machine> [dtb]"
+    exit 1
+fi
+
+VERSION=$1
+BUILD=$2
+TARGET=$3
+MACHINE=$4
+DTB=$5
+
+pushd $TFTP || exit 1
+
+mkdir -p $MACHINE
+
+pushd $MACHINE || exit 1
+
+cp $BUILD/$TARGET linux-$VERSION
+ln -sf linux-$VERSION linux
+
+if [ -n "$DTB" ]; then
+	cp $BUILD/$(dirname $TARGET)/dts/$DTB .
+	ln -sf $(basename $DTB) dtb
+fi
+
+popd
+popd

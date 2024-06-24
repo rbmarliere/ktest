@@ -1,0 +1,14 @@
+MACHINE = sid
+
+INCLUDE ../../include/defaults
+INCLUDE ../../include/debianvm
+
+DEFAULTS OVERRIDE
+#MIN_CONFIG = ${CONFIG_DIR}/device_cleanup/x86
+
+TEST_START
+TEST_TYPE = make_warnings_file
+BUILD_NOCLEAN = 1
+#BUILD_TYPE = defconfig
+BUILD_TYPE = useconfig:${CONFIG_DIR}/device_cleanup/x86_nosysfs
+REBOOT_ON_SUCCESS = 0

@@ -1,0 +1,19 @@
+MACHINE = rpi32
+DTB = broadcom/bcm2837-rpi-3-b.dtb
+
+INCLUDE ../include/defaults
+
+DEFAULTS OVERRIDE
+#MAKE_CMD = CROSS_COMPILE=/usr/bin/arm-linux-gnueabi- make ARCH=arm
+MAKE_CMD = CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- make ARCH=arm
+BUILD_TARGET = arch/arm/boot/zImage
+POST_BUILD = ${SCRIPTS_DIR}/tftp_install ${KERNEL_VERSION} ${OUTPUT_DIR} ${BUILD_TARGET} ${MACHINE} ${DTB}
+
+TEST_START
+TEST_TYPE = build
+BUILD_TYPE = allnoconfig
+#BUILD_TYPE = useconfig:${CONFIG_DIR}/old-config
+#BUILD_TYPE = useconfig:${CONFIG_DIR}/bcm2709_defconfig
+#BUILD_TYPE = useconfig:${CONFIG_DIR}/new-config_frommin
+BUILD_NOCLEAN = 0
+

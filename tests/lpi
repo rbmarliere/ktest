@@ -1,0 +1,16 @@
+MACHINE = lpi
+DTB = thead/th1520-lichee-pi-4a.dtb
+
+INCLUDE ../include/defaults
+
+DEFAULTS OVERRIDE
+MAKE_CMD = CROSS_COMPILE=/usr/bin/riscv64-linux-gnu- make ARCH=riscv
+BUILD_TARGET = arch/riscv/boot/Image
+POST_BUILD = ${SCRIPTS_DIR}/tftp_install ${KERNEL_VERSION} ${OUTPUT_DIR} ${BUILD_TARGET} ${MACHINE} ${DTB}
+
+TEST_START
+TEST_TYPE = build
+BUILD_TYPE = revyos_defconfig
+MIN_CONFIG = 
+#BUILD_TYPE = useconfig:${CONFIG_DIR}/vendor
+BUILD_NOCLEAN = 1

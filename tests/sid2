@@ -1,0 +1,17 @@
+MACHINE = sid2
+
+INCLUDE ../include/defaults
+INCLUDE ../include/debianvm
+
+#TEST_START
+#TEST = ${SSH} "echo YES!"
+#TEST_TYPE = test
+#BUILD_NOCLEAN = 1
+
+MAKE_CMD = make LLVM=1 CLIPPY=1
+
+TEST_START
+MIN_CONFIG = ${CONFIG_DIR}/rust
+TEST = ${SSH} "echo YES"
+TEST_TYPE = test
+BUILD_NOCLEAN = 1

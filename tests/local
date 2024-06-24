@@ -1,0 +1,13 @@
+MACHINE = local
+
+INCLUDE ../include/defaults
+
+DEFAULTS OVERRIDE
+POST_BUILD = ${SCRIPTS_DIR}/local_install ${KERNEL_VERSION} ${OUTPUT_DIR}
+
+TEST_START
+#TEST_TYPE = build
+TEST_TYPE = make_warnings_file
+BUILD_OPTIONS = -j32 bindeb-pkg
+BUILD_TYPE = useconfig:${CONFIG_DIR}/local/stable
+BUILD_NOCLEAN = 1

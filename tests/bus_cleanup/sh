@@ -1,0 +1,14 @@
+MACHINE = sh
+
+INCLUDE ../../include/defaults
+INCLUDE ../../include/debianvm
+
+DEFAULTS OVERRIDE
+MAKE_CMD = CROSS_COMPILE=/mnt/md0/toolchains/superh/sh-sh4--glibc--stable-2023.11-1/bin/sh4-linux- ARCH=sh make
+MIN_CONFIG = ${CONFIG_DIR}/bus_cleanup
+
+TEST_START
+BUILD_TYPE = defconfig
+TEST_TYPE = make_warnings_file
+BUILD_NOCLEAN = 1
+REBOOT_ON_SUCCESS = 0

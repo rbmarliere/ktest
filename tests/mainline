@@ -1,0 +1,21 @@
+MACHINE = mainline
+
+INCLUDE ../include/defaults
+
+DEFAULTS OVERRIDE
+
+MAKE_CMD = make LLVM=1
+
+OUTPUT_DIR = ${THIS_DIR}/build/mainline
+ADD_CONFIG = ${CONFIG_DIR}/mainline/config
+
+PRE_BUILD = ${SCRIPTS_DIR}/mainline_pre ${BUILD_DIR} ${OUTPUT_DIR}
+PRE_BUILD_DIE = 1
+
+POST_BUILD = ${SCRIPTS_DIR}/mainline_post ${BUILD_DIR} ${OUTPUT_DIR}
+POST_BUILD_DIE = 1
+
+TEST_START
+TEST_TYPE = build
+BUILD_TYPE = allmodconfig
+BUILD_NOCLEAN = 1

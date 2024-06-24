@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+    echo "usage: $0 <kernel version> <build output dir>"
+    exit 1
+fi
+
+VERSION=$1
+BUILD=$2
+
+pushd "$BUILD/.." || exit
+
+rm -rf ./*"$VERSION"*dbg*{deb,changes,buildinfo}
+sudo dpkg -i ./linux-{image,headers}*"$VERSION"*.deb && sudo update-grub
+rm -rf ./*"$VERSION"*{deb,changes,buildinfo}
+rm -rf ./*{upstream,libc}*{deb,changes,buildinfo}
+
+popd || exit

@@ -1,0 +1,15 @@
+MACHINE = m68k
+
+INCLUDE ../../include/defaults
+INCLUDE ../../include/debianvm
+
+DEFAULTS OVERRIDE
+MAKE_CMD = CROSS_COMPILE=/usr/bin/m68k-linux-gnu- ARCH=m68k make
+#BUILD_TARGET = arch/arm/boot/zImage
+MIN_CONFIG = ${CONFIG_DIR}/bus_cleanup
+
+TEST_START
+BUILD_TYPE = defconfig
+TEST_TYPE = make_warnings_file
+BUILD_NOCLEAN = 0
+REBOOT_ON_SUCCESS = 0

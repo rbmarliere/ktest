@@ -1,0 +1,44 @@
+CONFIG_LOCALVERSION_AUTO=y
+
+CONFIG_INITRAMFS_SOURCE="/mnt/md0/images/initramfs/buildroot/output/images/rootfs.cpio"
+
+CONFIG_BINFMT_ELF=y           # Support for Executable and Linkable Format (ELF)
+CONFIG_DEVTMPFS=y             # Early ramfs instance at bootup for /dev
+CONFIG_TMPFS=y                # In-memory filesystem support
+CONFIG_CGROUPS=y              # Process grouping isolation
+CONFIG_INOTIFY_USER=y         # File monitoring interface for userspace
+
+CONFIG_NET=y                  # Networking support
+CONFIG_UNIX=y                 # Unix domain sockets
+CONFIG_INET=y                 # TCP/IP networking
+CONFIG_NFS_FS=y               # Network FS client support (v3)
+CONFIG_IP_PNP=y               # Automatic IP configuration
+CONFIG_IP_PNP_DHCP=y          # DHCP for IP auto config
+CONFIG_ROOT_NFS=y             # Root FS through NFS
+CONFIG_NETDEVICES=y           # Network device support
+
+#
+# Serial drivers
+#
+CONFIG_SERIAL_EARLYCON=y
+CONFIG_SERIAL_8250=y
+# CONFIG_SERIAL_8250_DEPRECATED_OPTIONS is not set
+CONFIG_SERIAL_8250_16550A_VARIANTS=y
+# CONFIG_SERIAL_8250_FINTEK is not set
+CONFIG_SERIAL_8250_CONSOLE=y
+CONFIG_SERIAL_8250_DMA=y
+CONFIG_SERIAL_8250_PCI=y
+CONFIG_SERIAL_8250_EXAR=y
+CONFIG_SERIAL_8250_NR_UARTS=6
+CONFIG_SERIAL_8250_RUNTIME_UARTS=6
+# CONFIG_SERIAL_8250_EXTENDED is not set
+# CONFIG_SERIAL_8250_ASPEED_VUART is not set
+CONFIG_SERIAL_8250_DWLIB=y
+CONFIG_SERIAL_8250_DW=y
+# CONFIG_SERIAL_8250_RT288X is not set
+CONFIG_SERIAL_OF_PLATFORM=y
+
+CONFIG_OF=y
+CONFIG_STMMAC_PLATFORM=y
+CONFIG_STMMAC_ETH=y
+CONFIG_DWMAC_THEAD=y

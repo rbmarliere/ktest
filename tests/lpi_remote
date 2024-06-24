@@ -1,0 +1,21 @@
+MACHINE = lpi
+DTB = thead/th1520-lichee-pi-4a.dtb
+
+FTP_DIR = /mnt/md0/exports/ftp/lpi
+TARGET_IMAGE = ${FTP_DIR}/linux
+POWER_CYCLE = echo use the thumb luke; read a
+CONSOLE = cat ${SCRIPTS_DIR}/ttyUSB0
+SWITCH_TO_TEST = cp ${OUTPUT_DIR}/${BUILD_TARGET} ${TARGET_IMAGE}
+SWITCH_TO_GOOD = ssh ${SSH_USER}/${MACHINE} cp ${FTP_DIR}/vendor/Image ${TARGET_IMAGE}
+
+INCLUDE ../include/defaults
+
+DEFAULTS OVERRIDE
+MAKE_CMD = CROSS_COMPILE=/usr/bin/riscv64-linux-gnu- make ARCH=riscv
+BUILD_TARGET = arch/riscv/boot/Image
+#POST_BUILD = ${SCRIPTS_DIR}/tftp_install ${KERNEL_VERSION} ${OUTPUT_DIR} ${BUILD_TARGET} ${MACHINE} ${DTB}
+
+TEST_START
+TEST_TYPE = boot
+BUILD_TYPE = defconfig
+BUILD_NOCLEAN = 1

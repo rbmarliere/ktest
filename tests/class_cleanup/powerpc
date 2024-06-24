@@ -1,0 +1,15 @@
+MACHINE = powerpc
+
+INCLUDE ../../include/defaults
+INCLUDE ../../include/debianvm
+
+DEFAULTS OVERRIDE
+#MAKE_CMD = CROSS_COMPILE=/mnt/md0/toolchains/powerpc/powerpc64le-power8--glibc--stable-2023.11-1/bin/powerpc64le-linux- ARCH=powerpc make
+MAKE_CMD = CROSS_COMPILE=powerpc-linux-gnu- ARCH=powerpc make
+MIN_CONFIG = ${CONFIG_DIR}/class_cleanup/powerpc
+
+TEST_START
+BUILD_TYPE = defconfig
+TEST_TYPE = make_warnings_file
+BUILD_NOCLEAN = 1
+REBOOT_ON_SUCCESS = 0

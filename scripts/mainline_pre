@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -euo pipefail
+set -x
+
+if [ $# -ne 2 ]; then
+    echo "usage: $0 <build dir> <output dir>"
+    exit 1
+fi
+
+BUILD=$1
+OUTPUT=$2
+
+pushd $BUILD
+rustc=$(scripts/min-tool-version.sh rustc)
+bindgen=$(scripts/min-tool-version.sh bindgen)
+cargo install --locked --version $bindgen bindgen-cli
+
+mkdir -p $OUTPUT
+pushd $OUTPUT
+rustup override set $rustc
+rustup component add rust-src
+
