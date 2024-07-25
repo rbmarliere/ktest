@@ -1,0 +1,4 @@
+INCLUDE ../../include/mainline
+
+MAKE_CMD = CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- make LLVM=1 ARCH=arm
+BUILD_TARGET = arch/arm/boot/zImage

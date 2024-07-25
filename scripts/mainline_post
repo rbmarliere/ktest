@@ -4,14 +4,15 @@ set -euo pipefail
 set -x
 
 if [ $# -ne 2 ]; then
-    echo "usage: $0 <build dir> <output dir>"
+    echo "usage: $0 <build dir> <output dir> <arch>"
     exit 1
 fi
 
 BUILD=$1
 OUTPUT=$2
+ARCH=$3
 
-$BUILD/scripts/clang-tools/gen_compile_commands.py -d $OUTPUT -o $BUILD/../compile_commands.json || exit
+$BUILD/scripts/clang-tools/gen_compile_commands.py -d $OUTPUT -o $BUILD/../compile_commands-$ARCH.json || exit
 make LLVM=1 C=$BUILD O=$OUTPUT rust-analyzer
 make LLVM=1 C=$BUILD O=$OUTPUT rustdoc
-mv $OUTPUT/rust-project.json $BUILD/..
+mv $OUTPUT/rust-project.json $BUILD/../rust-project-$ARCH.json

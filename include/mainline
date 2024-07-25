@@ -1,10 +1,6 @@
 MACHINE = mainline
 
-INCLUDE ../include/defaults
-
 DEFAULTS OVERRIDE
-
-MAKE_CMD = make LLVM=1
 
 OUTPUT_DIR = ${THIS_DIR}/build/mainline
 ADD_CONFIG = ${CONFIG_DIR}/mainline/config
