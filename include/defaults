@@ -4,7 +4,7 @@ DEFAULTS IF NOT DEFINED BOX
 BOX := ${MACHINE}
 
 CONFIG_DIR := ${THIS_DIR}/config
-THIS_DIR = /home/rbmarliere/src/linux/ktest
+THIS_DIR = /home/rbmarliere/src/rbmarliere/ktest
 BUILD_DIR = ${PWD}
 OUTPUT_DIR = ${THIS_DIR}/build/${BOX}
 SCRIPTS_DIR := ${THIS_DIR}/scripts
