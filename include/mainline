@@ -1,17 +1,27 @@
+ARCH = x86_64
+
+INCLUDE ../../include/mainline
+
 MACHINE = mainline
+
+INCLUDE defaults
 
 DEFAULTS OVERRIDE
 
 OUTPUT_DIR = ${THIS_DIR}/build/mainline
 ADD_CONFIG = ${CONFIG_DIR}/mainline/config
 
-PRE_BUILD = ${SCRIPTS_DIR}/mainline_pre ${BUILD_DIR} ${OUTPUT_DIR}
-PRE_BUILD_DIE = 1
+#PRE_BUILD = ${SCRIPTS_DIR}/mainline_pre ${BUILD_DIR} ${OUTPUT_DIR}
+#PRE_BUILD_DIE = 1
 
-POST_BUILD = ${SCRIPTS_DIR}/mainline_post ${BUILD_DIR} ${OUTPUT_DIR}
+#POST_BUILD = ${SCRIPTS_DIR}/mainline_post ${BUILD_DIR} ${OUTPUT_DIR} ${ARCH}
+POST_BUILD = ${SCRIPTS_DIR}/compile_commands ${BUILD_DIR} ${OUTPUT_DIR} ${ARCH} ${KERNEL_VERSION}
 POST_BUILD_DIE = 1
+
+MAKE_CMD = make LLVM=1
 
 TEST_START
 TEST_TYPE = build
-BUILD_TYPE = allmodconfig
-BUILD_NOCLEAN = 1
+#BUILD_TYPE = allmodconfig
+BUILD_TYPE = defconfig
+#BUILD_NOCLEAN = 1

@@ -1,0 +1,3 @@
+POWER_CYCLE = killall vng; vng --run ${OUTPUT_DIR} > ${OUTPUT_DIR}/console.log
+CONSOLE = cat ${OUTPUT_DIR}/console.log
+CLOSE_CONSOLE_SIGNAL = KILL

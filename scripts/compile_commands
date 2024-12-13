@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if [ $# -ne 3 ]; then
+    echo "usage: $0 <build dir> <output dir> <kernel version>"
+    exit 1
+fi
+
+BUILD=$1
+OUTPUT=$2
+KERNEL_VERSION=$3
+
+DEST_DIR=$BUILD/../compile_commands
+DEST=$DEST_DIR/compile_commands-$KERNEL_VERSION.json
+
+mkdir -p $DEST_DIR
+$BUILD/scripts/clang-tools/gen_compile_commands.py -d $OUTPUT -o $DEST || exit 1
+ln -sf $DEST $BUILD/../../compile_commands.json

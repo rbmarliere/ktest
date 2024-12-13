@@ -1,4 +1,0 @@
-INCLUDE ../../include/mainline
-
-MAKE_CMD = make LLVM=1
-

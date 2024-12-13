@@ -1,0 +1,10 @@
+MACHINE = compile_commands
+
+INCLUDE ../include/defaults
+
+TEST_START
+TEST_TYPE = build
+BUILD_TYPE = defconfig
+
+POST_BUILD = ${SCRIPTS_DIR}/compile_commands ${BUILD_DIR} ${OUTPUT_DIR} ${KERNEL_VERSION}
+POST_BUILD_DIE = 1

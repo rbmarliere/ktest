@@ -1,0 +1,8 @@
+INCLUDE ../../include/riscv
+
+DEFAULTS OVERRIDE
+
+TEST_START
+BUILD_TYPE = build
+
+MIN_CONFIG = ${CONFIG_DIR}/sysctl_const/riscv

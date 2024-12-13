@@ -1,0 +1,10 @@
+MACHINE = vng
+
+INCLUDE ../include/defaults
+
+TEST_START
+TEST_TYPE = build
+#BUILD_TYPE = kvm_guest.config
+
+PRE_BUILD = vng -kv O=${OUTPUT_DIR}
+PRE_BUILD_DIE = 1
